@@ -1,0 +1,47 @@
+﻿@model WeCount.Data.ViewModels.ResumeVM
+@{
+    ViewData["Title"] = "Apply";
+    ViewData["LandingTitle"] = "Apply";
+}
+
+@section styles {
+    <link rel="stylesheet" href="~/assets/styles/form.css" />
+}
+
+<form id="main-form" method="post" asp-controller="Applications" asp-action="ApplyResume" enctype="multipart/form-data">
+    <div class="container">
+        <div><strong>• Étape 1 / Étape 2 :</strong> Uploader le cv du candidat.</div>
+        <br />
+        <div class="column">
+            <label asp-for="ResumeFile">CV <span class="required">*</span></label>
+            <input class="resume-input" type="file" asp-for="ResumeFile"  accept="image/*, application/pdf" />
+            <span asp-validation-for="ResumeFile" class="error resume-error"></span>
+        </div>
+        <div class="column">
+            <button class="primary-button" type="submit">Save<i class="fa fa-save 2x"></i></button>
+        </div>
+    </div>
+</form>
+
+@section scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+<script>
+    const mainForm = document.getElementById("main-form"),
+        resumeInput = document.querySelector(".resume-input"),
+        resumeError = document.querySelector(".resume-error");
+    mainForm.addEventListener("submit", function (e) {
+        var $input = $(resumeInput),
+            files = $input[0].files,
+            filename = files[0].name,
+            extension = filename.substr(filename.lastIndexOf(".")),
+            allowedExtensionsRegx = /(\.jpg|\.jpeg|\.png|\.pdf)$/i,
+            isAllowed = allowedExtensionsRegx.test(extension);
+        if (!isAllowed) {
+            resumeError.textContent = "Invalid File Type.";
+            e.preventDefault();
+        }
+    });
+</script>
+} 

@@ -1,0 +1,98 @@
+form {
+  padding: 48px 0;
+}
+form .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 8px;
+}
+form p {
+  grid-column: 1/-1;
+  margin: 8px 0;
+  font-weight: 600;
+  color: var(--grey-color);
+}
+form .column label {
+  display: block;
+  color: var(--grey-color);
+  margin: 10px 0 4px;
+}
+form .column input:not([type="submit"]),
+form .column select {
+  color: #222;
+  border: none;
+  border-bottom: 2px solid var(--grey-color);
+  background-color: #f8f8f8;
+  height: 40px;
+  padding: 8px 14px;
+  font-size: 1.7rem;
+  transition: all 0.3s;
+}
+form .column input:not([type="submit"]):focus,
+form .column select:focus {
+  outline: none;
+}
+form .column textarea {
+  height: 140px;
+  resize: vertical;
+  color: #222;
+  border: none;
+  border-bottom: 2px solid var(--grey-color);
+  background-color: #f8f8f8;
+  padding: 8px 14px;
+  font-size: 1.7rem;
+  width: 100%;
+  transition: all 0.3s;
+}
+form .column textarea:focus {
+  outline: none;
+}
+form .column .primary-button {
+  display: block;
+  width: 240px;
+  border: 1px solid var(--grey-color);
+  color: var(--grey-color);
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 8px 24px;
+  font-size: 2rem;
+  margin: 22px 0;
+  cursor: pointer;
+}
+form .column .primary-button i {
+  font-size: 2rem;
+  display: inline-block;
+  padding: 4px;
+}
+form .column input:not([type="submit"]),
+form .column select {
+  width: 100%;
+}
+form .column input[type="file"] {
+  padding: 8px 14px;
+}
+form .column h3 {
+  color: var(--grey-color);
+  margin: 10px 0 4px;
+}
+form .column .amount {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+form .column .amount label {
+  display: inline-block;
+}
+form .column .amount input[type="radio"] {
+  height: 28px;
+  width: 28px;
+  position: relative;
+  top: 8px;
+}
+form .column:last-of-type {
+  grid-column: 1/-1;
+}
+@media (max-width: 575.98px) {
+  form .container {
+    grid-template-columns: 1fr;
+  }
+}

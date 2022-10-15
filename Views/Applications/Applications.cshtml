@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "Applications";
+    ViewData["LandingTitle"] = "Applications";
+}
+
+@section styles {
+    <link rel="stylesheet" href="~/assets/styles/programs.css" />
+    <style>
+        .grid-group {
+            display: grid;
+            grid-template-columns: auto auto;
+            column-gap: 14px;
+            place-items: center
+        }
+        .delete-button, .primary-button {
+            width: auto;
+            font-size: 14px;
+            padding: 14px
+        }
+    </style>
+}
+
+@model IEnumerable<WeCount.Models.Application>
+<div class="programs">
+    <div class="container">
+        @foreach (var item in Model)
+        {
+            <div class="card">
+                <object data="@item.Resume" type="application/pdf, images/*"></object>
+                <div class="card-body">
+                    <h4 class="card-header">@item.FirstName @item.LastName</h4>
+                    <strong>Mail: @item.Mail</strong>
+                    <strong>Phone:  @item.Phone</strong>
+
+                    <strong>
+                        Years Of Experience: @item.YearsOfExperinces
+                        @if (item.YearsOfExperinces == 1)
+                        {
+                            <span>Year</span>
+                        }
+                        else if (item.YearsOfExperinces == 1)
+                        {
+                            <span>Years</span>
+                        }
+                    </strong>
+
+                    <p class="card-text three-lines">Study Level:  @item.StudyLevel</p>
+                    <div class="grid-group">
+                        <a class="primary-button" href="upload/programs">Show more</a>
+                        <form class="delete-application-form" asp-action="DeleteApplication" asp-controller="Applications" asp-route-slag="@item.Slag">
+                            <button class="delete-button" type="submit">Delete</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts {
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="~/assets/scripts/sweetalert2.all.min.js"></script>
+    <script>
+        const deleteApplicationForms = document.querySelectorAll('.delete-application-form');
+        deleteApplicationForms.forEach(form => {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                let slag = e.target.getAttribute("data-slag");
+                Swal.fire({
+                    title: 'Do you really want to delete This application?',
+                    showCancelButton: true,
+                    confirmButtonText: 'Delete',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        /*
+                        axios({
+                            method: 'delete',
+                            url: `/application/delete/${slag}`,
+                            responseType: 'json'
+                        })
+                            .then(function (response) {
+                                console.log(response);
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Your work has been saved',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            });
+                          */
+
+                        e.target.submit();
+                        
+                    }
+                })
+            })
+        })
+    </script>
+} 

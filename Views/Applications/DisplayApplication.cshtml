@@ -1,0 +1,20 @@
+﻿@model WeCount.Models.Application
+<div class="container content">
+    <div><strong>• Étape 1 / Étape 2 / Étape 3 :</strong> visualisation du résumé des informations saisies.</div>
+    <br />
+    @Model.FirstName
+    <br />
+    @Model.LastName
+    <br />
+    @Model.Mail
+    <br />
+    Years Of Experience: @Model.YearsOfExperinces
+    @if (Model.YearsOfExperinces == 1)
+    {
+        <span>Year</span>
+    }
+    else if (Model.YearsOfExperinces == 1)
+    {
+        <span>Years</span>
+    }
+</div>

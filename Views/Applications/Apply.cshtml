@@ -1,0 +1,62 @@
+﻿@model WeCount.Models.Application
+@{
+    ViewData["Title"] = "Apply";
+    ViewData["LandingTitle"] = "Apply";
+}
+
+@section styles {
+    <link rel="stylesheet" href="~/assets/styles/form.css" />
+}
+
+<form method="post" asp-controller="Applications" asp-action="Apply">
+    <div class="container">
+        <div><strong>• Étape 1 :</strong> Saisie des informations suivantes sur un formulaire</div>
+        <br />
+        <p>All fields marked with an asterisk * are required</p>
+        <div class="column">
+            <label asp-for="FirstName">Prénom <span class="required">*</span></label>
+            <input type="text" asp-for="FirstName" />
+            <span asp-validation-for="FirstName" class="error"></span>
+
+            <label asp-for="LastName">Nom <span class="required">*</span></label>
+            <input type="text" asp-for="LastName" />
+            <span asp-validation-for="LastName" class="error"></span>
+
+            <label asp-for="Mail">Mail <span class="required">*</span></label>
+            <input type="email" asp-for="Mail" />
+            <span asp-validation-for="Mail" class="error"></span>
+
+            <label asp-for="Phone">Téléphone <span class="required">*</span></label>
+            <input type="text" asp-for="Phone" />
+            <span asp-validation-for="Phone" class="error"></span>
+        </div>
+
+        <div class="column">
+            <label asp-for="StudyLevel">Niveau D'etude <span class="required">*</span></label>
+            <select asp-for="StudyLevel">
+                <option value="Bac+2">Bac+2</option>
+                <option value="Bac+3">Bac+3</option>
+                <option value="Bac+4">Bac+4</option>
+                <option value="Bac+5">Bac+4</option>
+            </select>
+            <span asp-validation-for="StudyLevel" class="error"></span>
+
+            <label asp-for="YearsOfExperinces">Nombre d’années d’expérience <span class="required">*</span></label>
+            <input type="number" asp-for="YearsOfExperinces" min="0" max="100" />
+            <span asp-validation-for="YearsOfExperinces" class="error"></span>
+
+            <label asp-for="LastJob">Dernier employeur <span class="required">*</span></label>
+            <input type="text" asp-for="LastJob" />
+            <span asp-validation-for="LastJob" class="error"></span>
+        </div>
+        <div class="column">
+            <button class="primary-button" type="submit">Save<i class="fa fa-save 2x"></i></button>
+        </div>
+    </div>
+</form>
+
+@section scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+} 

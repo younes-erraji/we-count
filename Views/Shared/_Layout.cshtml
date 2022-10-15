@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeCount - @ViewData["Title"]</title>
+    <link rel="icon" href="https://wecount.ma/images/logo.svg" />
+    <link rel="stylesheet" href="~/assets/styles/utilities/normalize.css" />
+    <link rel="stylesheet" href="~/assets/styles/utilities/utilities.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/assets/styles/utilities/font-awesome.min.css" />
+    @RenderSection("styles", false)
+</head>
+<body>
+    <header>
+        <div class="container">
+            <marquee class="info">
+                <ul>
+                    <li>
+                        <i class="fa fa-phone"></i>
+                        <div class="content">
+                            <strong>+212 – (0) 522 252 965</strong>
+                            <strong>+212 – (0) 522 252 965</strong>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa fa-envelope-square"></i>
+                        <div class="content"><strong>hello@wecount.ma</strong></div>
+                    </li>
+                    <li>
+                        <i class="fa fa-clock-o"></i>
+                        <div class="content"><strong>Monday To Friday</strong><strong>9:00 – 18:00</strong></div>
+                    </li>
+                </ul>
+            </marquee>
+            <ul class="socials">
+                <li><a href="#"><i class="fa fa-facebook-square fa-2x" data-social="facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter-square fa-2x" data-social="twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus-square fa-2x" data-social="google-plus"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin-square fa-2x" data-social="linkedin"></i></a></li>
+            </ul>
+        </div>
+    </header>
+    <nav>
+        <div class="container">
+            <h1><a asp-area="" asp-controller="Home" asp-action="Index"><img src="https://wecount.ma/images/logo.svg" /></a></h1>
+            <div class="toggle-button"><i class="fa fa-bars"></i></div>
+            <ul class="links">
+                <li><a asp-area="" asp-controller="Applications" asp-action="Index">Page d'accueil</a></li>
+                <li><a asp-area="" asp-controller="Applications" asp-action="Applications">Candidats</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main role="main">
+        <div class="landing-page">
+            <div class="overlay"></div>
+            <div class="container">
+                <h2>@ViewData["LandingTitle"]</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo et culpa quia voluptatem temporibus. Harum mollitia rerum laboriosam inventore sequi non nam natus, amet veniam, voluptate iste voluptatem maxime autem quidem! Nulla nisi vero quidem distinctio perspiciatis esse, nostrum architecto molestiae eveniet magni facilis!
+                    <br />
+                    amet veniam, voluptate iste voluptatem maxime autem quidem! Nulla nisi vero quidem distinctio perspiciatis esse, nostrum architecto molestiae eveniet magni facilis.
+                </p>
+            </div>
+        </div>
+        @RenderBody()
+    </main>
+
+    <footer>
+        <div class="container">
+            <span>&copy; Copyright WeCount <br /> All Rights Reserved</span>
+            <ul class="socials">
+                <li><a href="#"><i class="fa fa-facebook-square fa-2x" data-social="facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter-square fa-2x" data-social="twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus-square fa-2x" data-social="google-plus"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin-square fa-2x" data-social="linkedin"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="~/assets/scripts/script.js"></script>
+    @RenderSection("scripts", false)
+</body>
+</html>

@@ -1,0 +1,69 @@
+Grammarly
+windscribes
+
+Settings -> ProductIconTheme -> Browse Additional Product Icon -> Material Product Icon
+
+- Visual Studio Extensions
+indent rainbow
+autoprefixer
+Auto Rename Tag
+Auto-Using for C#
+Better Comments
+Bracket Pair Colorizer 2
+C#
+Code Spell Checker
+Compare Folders
+CSS Peek
+DotENV
+EditorConfig for VS Code
+ES7 React/Redux/GraphQL/React-Native snippets
+ESLint
+html tag wrapper
+Icon Fonts
+JavaScript (ES6) code snippets
+JavaScript Debugger
+Laravel Artisan
+Laravel Blade Snippets
+Laravel Blade Spacer
+Laravel Docs
+Laravel goto view
+Laravel Snippets
+Live Server
+Material Icon Theme
+Path Intellisense
+PHP Intelephense
+Polacode
+Prettier - Code formatter
+pug
+Rainbow Tags
+React Native Tools
+React-Native/React/Redux snippets for es6/es7
+Sass
+Simple React Snippets
+Visual Studio IntelliCode
+Auto Close Tag
+Bootstrap 4, Font awesome 4, Font Awesome 5 Free & Pro snippets
+css-auto-prefix
+GitLens — Git supercharged
+Jest
+Sass Autocompile
+Angular Extension Pack
+Angular Language Service
+
+- Browser Extensions
+ColorZilla
+Fake Filler
+Free Download Manager
+HTTPS Everywhere
+JSONView
+Measure-it
+React Developer Tools
+Redux DevTools
+uBlock Origin
+Vue.js DevTools
+WhatFont
+Octotree - Github Code Tree
+Wappalyzer
+Validity
+User Javascript and CSS
+Mailtrack

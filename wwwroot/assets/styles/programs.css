@@ -1,0 +1,67 @@
+.programs {
+    padding: 48px 0;
+    background-color: var(--secondary-bg)
+}
+
+    .programs .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
+        column-gap: 14px;
+        row-gap: 12px;
+        justify-content: space-evenly;
+        overflow-x: hidden
+    }
+
+    .programs .d-flex {
+        grid-column: 1/-1;
+        display: flex;
+        align-items: center;
+        gap: 12px
+    }
+
+        .programs .d-flex select {
+            flex: 2
+        }
+
+    .programs .card {
+        background-color: var(--white-color)
+    }
+
+        .programs .card object {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            object-position: center
+        }
+
+        .programs .card .card-body {
+            padding: 8px
+        }
+
+            .programs .card .card-body h4 {
+                margin: 0;
+                padding: 4px 0
+            }
+
+            .programs .card .card-body strong {
+                font-weight: 600;
+                margin-top: 7px;
+                color: #1d1c1c
+            }
+
+            .programs .card .card-body p {
+                color: var(--grey-color);
+                padding: 0;
+                margin: 7px 0;
+                line-height: 1.4
+            }
+
+            .programs .card .card-body a {
+                color: var(--white-color);
+                display: block;
+                margin: 8px 14px;
+                padding: 4px;
+                border-radius: 4px;
+                text-align: center;
+                background-color: #3c3c69
+            }
