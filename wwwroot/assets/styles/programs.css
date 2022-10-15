@@ -45,8 +45,9 @@
 
             .programs .card .card-body strong {
                 font-weight: 600;
-                margin-top: 7px;
-                color: #1d1c1c
+                margin: 7px 0;
+                color: #1d1c1c;
+                display: inline-block;
             }
 
             .programs .card .card-body p {

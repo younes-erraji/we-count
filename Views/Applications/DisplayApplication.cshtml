@@ -1,20 +1,77 @@
 ﻿@model WeCount.Models.Application
-<div class="container content">
+
+@section styles {
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 8px;
+        }
+
+        object, img {
+            width: 100%;
+            display: block
+        }
+
+        h4 {
+            margin: 0;
+            padding: 4px 0
+        }
+
+        strong {
+            font-weight: 600;
+            margin: 7px 0;
+            color: #1d1c1c;
+            display: inline-block;
+        }
+
+        p {
+            color: var(--grey-color);
+            padding: 0;
+            margin: 7px 0;
+            line-height: 1.4
+        }
+    </style>
+}
+
+<div class="container content-container">
     <div><strong>• Étape 1 / Étape 2 / Étape 3 :</strong> visualisation du résumé des informations saisies.</div>
-    <br />
-    @Model.FirstName
-    <br />
-    @Model.LastName
-    <br />
-    @Model.Mail
-    <br />
-    Years Of Experience: @Model.YearsOfExperinces
-    @if (Model.YearsOfExperinces == 1)
-    {
-        <span>Year</span>
-    }
-    else if (Model.YearsOfExperinces == 1)
-    {
-        <span>Years</span>
-    }
+    <div class="grid">
+        <div>
+            <strong>@Model.Resume</strong>
+            <h4 class="card-header">Nom: @Model.FullName</h4>
+            <strong>Mail: @Model.Mail</strong>
+            <strong>Phone:  @Model.Phone</strong>
+
+            <strong>
+                Years Of Experience: @Model.YearsOfExperinces
+                @if (Model.YearsOfExperinces == 1)
+                {
+                    <span>Year</span>
+                }
+                else if (Model.YearsOfExperinces >= 1)
+                {
+                    <span>Years</span>
+                }
+            </strong>
+
+            <p class="card-text three-lines">Study Level:  @Model.StudyLevel</p>
+            <div>
+                <form class="delete-application-form" asp-action="DeleteApplication" asp-controller="Applications" method="post" asp-route-slag="@Model.Slag">
+                    <button class="delete-button" type="submit">Delete</button>
+                </form>
+            </div>
+        </div>
+        <div>
+            <a href="@Model.Resume.Replace("\\", "/")" download>Download CV</a>
+            @if (Model.GetExtension().Equals(".pdf", StringComparison.OrdinalIgnoreCase))
+            {
+                <object data="@Model.Resume.Replace("\\", "/")" type="application/pdf"></object>
+            }
+            else
+            {
+                <img src="@Model.Resume.Replace("\\", "/")" alt="" />
+            }
+        </div>
+    </div>
 </div>

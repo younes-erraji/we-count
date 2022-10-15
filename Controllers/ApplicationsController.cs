@@ -93,7 +93,7 @@ namespace WeCount.Controllers
             string filePath = "";
             if (resumeVM.ResumeFile != null)
             {
-                var _uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, $"Resumes/{slag}");
+                var _uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, $"Resumes\\{slag}");
                 if (!Directory.Exists(_uploadsFolder))
                 {
                     Directory.CreateDirectory(_uploadsFolder);
@@ -109,19 +109,12 @@ namespace WeCount.Controllers
             return filePath;
         }
 
-        [HttpDelete("application/delete/{slag}")]
+        [HttpPost("application/delete/{slag}")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteApplication(string slag)
         {
-            int deleted = _applicationsService.DeleteEntity(slag);
-            if (deleted == 1)
-            {
-                return Ok();
-            }
-            else
-            {
-                return Problem();
-            }
+            _applicationsService.DeleteEntity(slag);
+            return Redirect("/applications");
         }
     }
 }

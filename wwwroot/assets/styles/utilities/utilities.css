@@ -288,7 +288,7 @@ nav {
         grid-template-columns: auto 1fr;
         align-items: center;
         justify-content: space-between;
-        column-gap: 2%
+        column-gap: 14px
     }
 
     nav.scrolled {
@@ -297,7 +297,7 @@ nav {
 
     nav h1 {
         margin: 0;
-        padding: 7px;
+        padding: 4px;
         display: flex;
         align-items: center
     }
@@ -309,6 +309,7 @@ nav {
 
             nav h1 a img {
                 height: 47px;
+                padding: 4px;
                 transition: transform .4s
             }
 
@@ -478,7 +479,7 @@ nav {
         }
 }
 
-.content {
+.content-container {
     padding: 48px 0;
 }
 

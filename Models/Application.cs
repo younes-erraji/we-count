@@ -43,5 +43,11 @@ namespace WeCount.Models
     {
         [NotMapped]
         public string FullName => $"{FirstName} {LastName}";
+
+        public string GetExtension()
+        {
+            string extension = Resume.Substring(Resume.LastIndexOf("."));
+            return extension;
+        }
     }
 }

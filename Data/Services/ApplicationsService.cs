@@ -15,7 +15,7 @@ namespace WeCount.Data.Services
             _context = context;
         }
 
-        public List<Application> GetEntities() => _context.Applications.ToList();
+        public List<Application> GetEntities() => _context.Applications.OrderByDescending(application => application.CreatedAt).ToList();
 
         public Application GetEntity(int Id) => _context.Applications.FirstOrDefault(application => application.Id == Id);
 
