@@ -59,7 +59,8 @@
 
             <strong>
                 Nombre d’années d’expérience:
-                <span class="padding-left">@Model.YearsOfExperinces
+                <span class="padding-left">
+                    @Model.YearsOfExperinces
                 @if (Model.YearsOfExperinces == 1)
                 {
                     <span>année</span>
@@ -68,27 +69,45 @@
                 {
                     <span>années</span>
                 }
-                </span>
-            </strong>
+            </span>
+        </strong>
 
-            <p class="card-text three-lines">Niveau D'etude: <span class="padding-left">@Model.StudyLevel</span></p>
-            <strong>Dernier employeur: <span class="padding-left">@Model.LastJob</span></strong>
-            <div>
-                <form class="delete-application-form" asp-action="DeleteApplication" asp-controller="Applications" method="post" asp-route-slag="@Model.Slag">
-                    <button class="delete-button" type="submit">Supprimer</button>
-                </form>
-            </div>
-        </div>
-        <div style="text-align:center">
-            <a href="@Model.Resume.Replace("\\", "/")" download>Download CV</a>
-            @if (Model.GetExtension().Equals(".pdf", StringComparison.OrdinalIgnoreCase))
-            {
-                <object data="@Model.Resume.Replace("\\", "/")" type="application/pdf"></object>
-            }
-            else
-            {
-                <img src="@Model.Resume.Replace("\\", "/")" alt="" />
-            }
+        <p class="card-text three-lines">Niveau D'etude: <span class="padding-left">@Model.StudyLevel</span></p>
+        <strong>Dernier employeur: <span class="padding-left">@Model.LastJob</span></strong>
+        <div>
+            <form class="delete-application-form" asp-action="DeleteApplication" asp-controller="Applications" method="post" asp-route-slag="@Model.Slag">
+                <button class="delete-button" type="submit">Supprimer</button>
+            </form>
         </div>
     </div>
+    <div style="text-align:center">
+        <a href="@Model.Resume.Replace("\\", "/")" download>Download CV</a>
+        @if (Model.GetExtension().Equals(".pdf", StringComparison.OrdinalIgnoreCase))
+        {
+            <object data="@Model.Resume.Replace("\\", "/")" type="application/pdf"></object>
+        }
+        else
+        {
+            <img src="@Model.Resume.Replace("\\", "/")" alt="" />
+        }
+    </div>
 </div>
+</div>
+@section scripts {
+    <script src="~/assets/scripts/sweetalert2.all.min.js"></script>
+    <script>
+        const deleteApplicationForm = document.querySelector('.delete-application-form');
+        deleteApplicationForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Tu veux vraiment supprimer ce candidat?',
+                showCancelButton: true,
+                confirmButtonText: 'Supprimer',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    e.target.submit();
+                }
+            })
+        });
+    </script>
+} 
