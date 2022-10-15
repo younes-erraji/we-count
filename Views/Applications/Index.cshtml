@@ -1,12 +1,15 @@
 ﻿@{
-    ViewData["Title"] = "Job Offer";
-    ViewData["LandingTitle"] = "Job Offer";
+    ViewData["Title"] = "Offre D'emploi";
 }
 
 @section styles {
     <style>
         .primary-button {
             margin-top: 0
+        }
+
+        ul {
+            all: revert;
         }
     </style>
 }
@@ -64,5 +67,5 @@
         </ul>
     </div>
     <br />
-    <div><a asp-area="" asp-controller="Applications" asp-action="Apply" class="primary-button">Apply <i class="fa fa-next 2x"></i></a></div>
+    <div><a asp-area="" asp-controller="Applications" asp-action="Apply" class="primary-button">Appliquer <i class="fa fa-arrow-right 2x"></i></a></div>
 </div>

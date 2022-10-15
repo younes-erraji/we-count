@@ -1,7 +1,6 @@
 ﻿@model WeCount.Data.ViewModels.ResumeVM
 @{
-    ViewData["Title"] = "Apply";
-    ViewData["LandingTitle"] = "Apply";
+    ViewData["Title"] = "Appliquer CV";
 }
 
 @section styles {
@@ -12,13 +11,14 @@
     <div class="container">
         <div><strong>• Étape 1 / Étape 2 :</strong> Uploader le cv du candidat.</div>
         <br />
+        <p>Tous les champs marqués d'un * sont obligatoires</p>
         <div class="column">
             <label asp-for="ResumeFile">CV <span class="required">*</span></label>
-            <input class="resume-input" type="file" asp-for="ResumeFile"  accept="image/*, application/pdf" />
+            <input class="resume-input" type="file" asp-for="ResumeFile" accept="image/*, application/pdf" />
             <span asp-validation-for="ResumeFile" class="error resume-error"></span>
         </div>
         <div class="column">
-            <button class="primary-button" type="submit">Save<i class="fa fa-save 2x"></i></button>
+            <button class="primary-button" type="submit">Enregistrer <i class="fa fa-save 2x"></i></button>
         </div>
     </div>
 </form>

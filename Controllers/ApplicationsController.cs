@@ -73,7 +73,7 @@ namespace WeCount.Controllers
             {
                 string uniqueFileName = UploadedFile(resumeVM, slag, webHostEnvironment);
                 _applicationsService.InsertResume(slag, uniqueFileName);
-                return Redirect($"/display/application/{slag}");
+                return Redirect($"/application/details/{slag}");
             }
             else
             {
@@ -83,6 +83,13 @@ namespace WeCount.Controllers
 
         [HttpGet("display/application/{slag}")]
         public IActionResult DisplayApplication(string slag)
+        {
+            Application _application = _applicationsService.GetEntity(slag);
+            return View(_application);
+        }
+
+        [HttpGet("application/details/{slag}")]
+        public IActionResult ApplicationDetails(string slag)
         {
             Application _application = _applicationsService.GetEntity(slag);
             return View(_application);

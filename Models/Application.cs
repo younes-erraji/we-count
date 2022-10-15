@@ -8,10 +8,10 @@ namespace WeCount.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required(ErrorMessage = "First Name is required."), StringLength(25, MinimumLength = 1)]
+        [Required, StringLength(25, MinimumLength = 1)]
         [Display(Name = "Prénom")]
         public string FirstName { get; set; }
-        [Required(ErrorMessage = "Last Name is required."), StringLength(25, MinimumLength = 1)]
+        [Required, StringLength(25, MinimumLength = 1)]
         [Display(Name = "Nom")]
         public string LastName { get; set; }
 
@@ -36,6 +36,7 @@ namespace WeCount.Models
 
         [Display(Name = "CV")]
         public string Resume { get; set; }
+
         public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 

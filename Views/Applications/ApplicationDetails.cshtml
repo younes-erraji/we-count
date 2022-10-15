@@ -47,19 +47,18 @@
 
 <div class="container content-container">
     <div><strong style="display: inline">• Étape 1 / Étape 2 / Étape 3 :</strong> visualisation du résumé des informations saisies.</div>
+    <br />
     <div class="grid">
         <div>
-            <h4>
-                Nom:
-                <span class="padding-left">@Model.FirstName</span>
-            </h4>
-            <h4>Préom: <span class="padding-left">@Model.LastName</span></h4>
+            <h4>Nom: <span class="padding-left">@Model.LastName</span></h4>
+            <h4>Préom: <span class="padding-left">@Model.FirstName</span></h4>
             <strong>Mail: <span class="padding-left">@Model.Mail</span></strong>
             <strong>Téléphone: <span class="padding-left">@Model.Phone</span></strong>
 
             <strong>
                 Nombre d’années d’expérience:
-                <span class="padding-left">@Model.YearsOfExperinces
+                <span class="padding-left">
+                @Model.YearsOfExperinces
                 @if (Model.YearsOfExperinces == 1)
                 {
                     <span>année</span>
@@ -73,14 +72,9 @@
 
             <p class="card-text three-lines">Niveau D'etude: <span class="padding-left">@Model.StudyLevel</span></p>
             <strong>Dernier employeur: <span class="padding-left">@Model.LastJob</span></strong>
-            <div>
-                <form class="delete-application-form" asp-action="DeleteApplication" asp-controller="Applications" method="post" asp-route-slag="@Model.Slag">
-                    <button class="delete-button" type="submit">Supprimer</button>
-                </form>
-            </div>
         </div>
-        <div style="text-align:center">
-            <a href="@Model.Resume.Replace("\\", "/")" download>Download CV</a>
+        <div style="text-align: center">
+            <a href="@Model.Resume.Replace("\\", "/")" download>Télécharger CV</a>
             @if (Model.GetExtension().Equals(".pdf", StringComparison.OrdinalIgnoreCase))
             {
                 <object data="@Model.Resume.Replace("\\", "/")" type="application/pdf"></object>

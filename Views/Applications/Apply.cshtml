@@ -1,7 +1,6 @@
 ﻿@model WeCount.Models.Application
 @{
-    ViewData["Title"] = "Apply";
-    ViewData["LandingTitle"] = "Apply";
+    ViewData["Title"] = "Appliquer";
 }
 
 @section styles {
@@ -12,7 +11,7 @@
     <div class="container">
         <div><strong>• Étape 1 :</strong> Saisie des informations suivantes sur un formulaire</div>
         <br />
-        <p>All fields marked with an asterisk * are required</p>
+        <p>Tous les champs marqués d'un * sont obligatoires</p>
         <div class="column">
             <label asp-for="FirstName">Prénom <span class="required">*</span></label>
             <input type="text" asp-for="FirstName" />
@@ -50,7 +49,7 @@
             <span asp-validation-for="LastJob" class="error"></span>
         </div>
         <div class="column">
-            <button class="primary-button" type="submit">Save<i class="fa fa-save 2x"></i></button>
+            <button class="primary-button" type="submit">Enregistrer <i class="fa fa-save 2x"></i></button>
         </div>
     </div>
 </form>

@@ -1,6 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Applications";
-    ViewData["LandingTitle"] = "Applications";
+    ViewData["Title"] = "Condidats";
 }
 
 @section styles {
@@ -25,35 +24,43 @@
     <div class="container">
         @foreach (var item in Model)
         {
-            <div class="card">
-                <object data="@item.Resume" type="application/pdf"></object>
-                <div class="card-body">
-                    <strong>@item.Resume</strong>
-                    <h4 class="card-header">@item.FullName</h4>
-                    <strong>Mail: @item.Mail</strong>
-                    <strong>Phone:  @item.Phone</strong>
+        <div class="card">
 
-                    <strong>
-                        Years Of Experience: @item.YearsOfExperinces
-                        @if (item.YearsOfExperinces == 1)
-                        {
-                            <span>Year</span>
-                        }
-                        else if (item.YearsOfExperinces == 1)
-                        {
-                            <span>Years</span>
-                        }
-                    </strong>
+            @if (item.GetExtension().Equals(".pdf", StringComparison.OrdinalIgnoreCase))
+            {
+                <object data="@item.Resume.Replace("\\", "/")" type="application/pdf"></object>
+            }
+            else
+            {
+                <img src="@item.Resume.Replace("\\", "/")" alt="" />
+            }
 
-                    <p class="card-text three-lines">Study Level:  @item.StudyLevel</p>
-                    <div>
-                        <a class="primary-button" asp-controller="Applications" asp-action="DisplayApplication" asp-route-slag="@item.Slag">Show more</a>
-                        <form class="delete-application-form" asp-action="DeleteApplication" asp-controller="Applications" method="post" asp-route-slag="@item.Slag">
-                            <button class="delete-button" type="submit">Delete</button>
-                        </form>
-                    </div>
+            <div class="card-body">
+                <h4 class="card-header">@item.FullName</h4>
+                <strong>Mail: @item.Mail</strong>
+                <strong>Téléphone:  @item.Phone</strong>
+
+                <strong>
+                    Années d’expérience: @item.YearsOfExperinces
+                    @if (item.YearsOfExperinces == 1)
+                    {
+                        <span>Année</span>
+                    }
+                    else if (item.YearsOfExperinces == 1)
+                    {
+                        <span>Années</span>
+                    }
+                </strong>
+
+                <p class="card-text three-lines">Niveau D'etude:  @item.StudyLevel</p>
+                <div>
+                    <a class="primary-button" asp-controller="Applications" asp-action="DisplayApplication" asp-route-slag="@item.Slag">Détails</a>
+                    <form class="delete-application-form" asp-action="DeleteApplication" asp-controller="Applications" method="post" asp-route-slag="@item.Slag">
+                        <button class="delete-button" type="submit">Supprimer</button>
+                    </form>
                 </div>
             </div>
+        </div>
         }
     </div>
 </div>
@@ -67,9 +74,9 @@
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
                 Swal.fire({
-                    title: 'Do you really want to delete This application?',
+                    title: 'Tu veux vraiment supprimer ce candidat?',
                     showCancelButton: true,
-                    confirmButtonText: 'Delete',
+                    confirmButtonText: 'Supprimer',
                 }).then((result) => {
                     if (result.isConfirmed) {
                         e.target.submit();
