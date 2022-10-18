@@ -28,11 +28,11 @@
 
             @if (item.GetExtension().Equals(".pdf", StringComparison.OrdinalIgnoreCase))
             {
-                <object data="@item.Resume.Replace("\\", "/")" type="application/pdf"></object>
+                <object data="/@item.Resume.Replace("\\", "/")" type="application/pdf"></object>
             }
             else
             {
-                <img src="@item.Resume.Replace("\\", "/")" alt="" />
+                <img src="/@item.Resume.Replace("\\", "/")" alt="" />
             }
 
             <div class="card-body">

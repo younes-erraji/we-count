@@ -10,9 +10,11 @@ namespace WeCount.Models
         public int Id { get; set; }
         [Required, StringLength(25, MinimumLength = 1)]
         [Display(Name = "Prénom")]
+        [RegularExpression("^[a-zA-Z0-9 ]+$")]
         public string FirstName { get; set; }
         [Required, StringLength(25, MinimumLength = 1)]
         [Display(Name = "Nom")]
+        [RegularExpression("^[a-zA-Z0-9 ]+$")]
         public string LastName { get; set; }
 
         public string Slag { get; set; }

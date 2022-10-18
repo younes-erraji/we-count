@@ -16,6 +16,7 @@
         object, img {
             width: 100%;
             display: block;
+            min-height: 600px
         }
 
         h4 {
@@ -83,11 +84,11 @@
         <a href="@Model.Resume.Replace("\\", "/")" download>Download CV</a>
         @if (Model.GetExtension().Equals(".pdf", StringComparison.OrdinalIgnoreCase))
         {
-            <object data="@Model.Resume.Replace("\\", "/")" type="application/pdf"></object>
+            <object data="/@Model.Resume.Replace("\\", "/")" type="application/pdf"></object>
         }
         else
         {
-            <img src="@Model.Resume.Replace("\\", "/")" alt="" />
+            <img src="/@Model.Resume.Replace("\\", "/")" alt="" />
         }
     </div>
 </div>

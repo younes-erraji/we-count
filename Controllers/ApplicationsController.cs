@@ -97,7 +97,7 @@ namespace WeCount.Controllers
 
         private string UploadedFile(ResumeVM resumeVM, string slag, IWebHostEnvironment webHostEnvironment)
         {
-            string filePath = "";
+            string relativePath = "";
             if (resumeVM.ResumeFile != null)
             {
                 var _uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, $"Resumes\\{slag}");
@@ -106,14 +106,15 @@ namespace WeCount.Controllers
                     Directory.CreateDirectory(_uploadsFolder);
                 }
 
-                filePath = Path.Combine(_uploadsFolder, resumeVM.ResumeFile.FileName);
+                string filePath = Path.Combine(_uploadsFolder, resumeVM.ResumeFile.FileName);
+                relativePath = Path.Combine($"Resumes\\{slag}", resumeVM.ResumeFile.FileName);
                 using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
                 {
                     resumeVM.ResumeFile.CopyTo(fileStream);
                 }
             }
 
-            return filePath;
+            return relativePath;
         }
 
         [HttpPost("application/delete/{slag}")]

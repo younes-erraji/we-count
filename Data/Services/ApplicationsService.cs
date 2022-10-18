@@ -57,7 +57,7 @@ namespace WeCount.Data.Services
             {
                 FirstName = application.FirstName.Trim(),
                 LastName = application.LastName.Trim(),
-                Slag = $"{application.FirstName.Trim().ToLower()}-{application.LastName.Trim().ToLower()}{DateTime.Now.GetHashCode()}",
+                Slag = $"{application.FirstName.Trim()}-{application.LastName.Trim()}{DateTime.Now.GetHashCode()}".Replace(" ", "-").ToLower(),
                 Mail = application.Mail.ToLower().Trim(),
                 Phone = application.Phone.Trim(),
                 StudyLevel = application.StudyLevel,
