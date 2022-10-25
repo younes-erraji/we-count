@@ -37,8 +37,10 @@ namespace WeCount.Controllers
         [HttpGet("applications")]
         public IActionResult Applications()
         {
-            List<Application> _applications = _applicationsService.GetEntities();
-            return View(_applications);
+            // List<Application> _applications = _applicationsService.GetEntities();
+
+            ViewBag.Applications = _applicationsService.GetEntities();
+            return View();
         }
 
         [HttpPost("apply")]
@@ -61,7 +63,6 @@ namespace WeCount.Controllers
         [HttpGet("apply/resume/{slag}")]
         public IActionResult ApplyResume(string slag)
         {
-            // Application _application = _applicationsService.GetEntity(slag);
             return View();
         }
 
@@ -123,6 +124,18 @@ namespace WeCount.Controllers
         {
             _applicationsService.DeleteEntity(slag);
             return Redirect("/applications");
+        }
+
+        [HttpPost("application/search")]
+        [ValidateAntiForgeryToken]
+        public IActionResult SearchApplications(SearchVM searchVM)
+        {
+            if (ModelState.IsValid)
+                ViewBag.Applications = _applicationsService.SearchEntity(searchVM.SearchText);
+            else
+                ViewBag.Applications = _applicationsService.GetEntities();
+
+            return View("~/Views/Applications/Applications.cshtml");
         }
     }
 }

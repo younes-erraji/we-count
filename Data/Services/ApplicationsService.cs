@@ -117,5 +117,17 @@ namespace WeCount.Data.Services
 
             return _application.Slag;
         }
+
+        public List<Application> SearchEntity(string search)
+        {
+            List<Application> _applications = _context.Applications
+                .Where(application => application.FirstName.Contains(search) ||
+                                      application.LastName.Contains(search) ||
+                                      (application.FirstName + " " + application.LastName).Contains(search) ||
+                                      application.Mail.Contains(search))
+                .Select(application => application).ToList();
+
+            return _applications;
+        }
     }
 }

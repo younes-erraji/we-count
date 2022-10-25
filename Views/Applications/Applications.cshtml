@@ -16,57 +16,109 @@
         .delete-application-form {
             display: inline-block
         }
+
+        .search-area {
+            width: 100%
+        }
+
+        .search-area label {
+            display: block;
+            font-size: 15px;
+            color: #777;
+        }
+
+        .search-area .input-button-group {
+            display: grid;
+            grid-template-columns: 400px 150px;
+            grid-gap: 14px;
+        }
+
+            .search-area .input-button-group input,
+            .search-area .input-button-group input {
+                padding: 10px;
+                border-radius: 10px;
+                border: 1px solid #ccc
+            }
+
+        .container.block {
+            display: block;
+        }
+
+        .text-danger {
+            font-size: 14px;
+            color: red;
+            display: block;
+            margin-top: 4px
+        }
     </style>
 }
-
-@model IEnumerable<WeCount.Models.Application>
+@*@model IEnumerable<WeCount.Models.Application>*@
+@model WeCount.Data.ViewModels.SearchVM
 <div class="programs">
+    <div class="container block">
+        <form asp-action="SearchApplications" asp-controller="Applications" method="post" class="search-area">
+            <label asp-for="SearchText">Search: </label>
+            <div class="input-button-group">
+                <input asp-for="SearchText" />
+                <button type="submit">Search</button>
+            </div>
+            <span asp-validation-for="SearchText" class="text-danger"></span>
+        </form>
+        <hr />
+    </div>
     <div class="container">
-        @foreach (var item in Model)
+        @foreach (var item in ViewBag.Applications)
         {
-        <div class="card">
+            <div class="card">
 
-            @if (item.GetExtension().Equals(".pdf", StringComparison.OrdinalIgnoreCase))
-            {
-                <object data="/@item.Resume.Replace("\\", "/")" type="application/pdf"></object>
-            }
-            else
-            {
-                <img src="/@item.Resume.Replace("\\", "/")" alt="" />
-            }
+                @if (item.GetExtension().Equals(".pdf", StringComparison.OrdinalIgnoreCase))
+                {
+                    <object data="/@item.Resume.Replace("\\", "/")" type="application/pdf"></object>
+                }
+                else
+                {
+                    <img src="/@item.Resume.Replace("\\", "/")" alt="" />
+                }
 
-            <div class="card-body">
-                <h4 class="card-header">@item.FullName</h4>
-                <strong>Mail: @item.Mail</strong>
-                <strong>Téléphone:  @item.Phone</strong>
+                <div class="card-body">
+                    <h4 class="card-header">@item.FullName</h4>
+                    <strong>Mail: @item.Mail</strong>
+                    <strong>Téléphone:  @item.Phone</strong>
 
-                <strong>
-                    Années d’expérience: @item.YearsOfExperinces
-                    @if (item.YearsOfExperinces == 1)
-                    {
-                        <span>Année</span>
-                    }
-                    else if (item.YearsOfExperinces >= 1)
-                    {
-                        <span>Années</span>
-                    }
-                </strong>
+                    <strong>
+                        Années d’expérience: @item.YearsOfExperinces
+                        @if (item.YearsOfExperinces == 1)
+                        {
+                            <span>Année</span>
+                        }
+                        else if (item.YearsOfExperinces >= 1)
+                        {
+                            <span>Années</span>
+                        }
+                    </strong>
 
-                <p class="card-text three-lines">Niveau D'etude:  @item.StudyLevel</p>
-                <div>
-                    <a class="primary-button" asp-controller="Applications" asp-action="DisplayApplication" asp-route-slag="@item.Slag">Détails</a>
-                    <form class="delete-application-form" asp-action="DeleteApplication" asp-controller="Applications" method="post" asp-route-slag="@item.Slag">
-                        <button class="delete-button" type="submit">Supprimer</button>
-                    </form>
+                    <p class="card-text three-lines">Niveau D'etude:  @item.StudyLevel</p>
+                    <div>
+                        <a class="primary-button" asp-controller="Applications" asp-action="DisplayApplication" asp-route-slag="@item.Slag">Détails</a>
+                        <form class="delete-application-form" asp-action="DeleteApplication" asp-controller="Applications" method="post" asp-route-slag="@item.Slag">
+                            <button class="delete-button" type="submit">Supprimer</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        }
+
+        @if (ViewBag.Applications.Count == 0)
+        {
+            <div>No Result Found</div>
         }
     </div>
 </div>
 
 @section scripts {
-    @*<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
     <script src="~/assets/scripts/sweetalert2.all.min.js"></script>
     <script>
         const deleteApplicationForms = document.querySelectorAll('.delete-application-form');
